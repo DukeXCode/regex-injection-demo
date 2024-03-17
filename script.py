@@ -25,19 +25,15 @@ def send_check_request():
     print(f"CHECK: The request took {duration} seconds.")
 
 
-# Total number of requests to send
 total_requests = 150
 
-# Use ThreadPoolExecutor to run multiple requests in parallel
 with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
-    # Store futures
     futures = []
 
     for i in range(1, total_requests + 1):
         future = executor.submit(send_email_req)
         futures.append(future)
 
-    # Wait for all futures to complete and handle results/errors
     for future in concurrent.futures.as_completed(futures):
         try:
             result = future.result()
