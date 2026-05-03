@@ -59,6 +59,8 @@ While the attack is running, try `GET /check` — a trivial endpoint that just r
 
 ### Run it yourself
 
+**Requirements:** JDK 21 is the supported runtime. The Gradle build is pinned to a JDK 21 toolchain (`kotlin { jvmToolchain(21) }` in `build.gradle.kts`) because Kotlin 2.1.20 doesn't yet target JDK 25 bytecode and the mismatch breaks the build. If your `JAVA_HOME` points at a newer JDK (24/25), Gradle's toolchain auto-provisioning will download/use a JDK 21 just for compilation — but the simplest path is to install JDK 21 (e.g. Temurin 21) and run with that.
+
 Start the server:
 
 ```bash
